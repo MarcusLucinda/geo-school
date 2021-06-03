@@ -9,7 +9,7 @@ public class Student {
 
 	private ObjectId id;
 	private String name;
-	private LocalDate birthDate;
+	private String birthDate;
 	private Program program;
 	private List<Grade> grades;
 	private List<Skill> skills;
@@ -26,10 +26,10 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public LocalDate getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 	public Program getProgram() {
@@ -49,6 +49,11 @@ public class Student {
 	}
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
+	}
+	
+	public Student createId() {
+	this.setId(new ObjectId());
+		return this;
 	}
 	
 	

@@ -1,5 +1,8 @@
 package com.lucinda.geoschool.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +29,13 @@ public class StudentController {
 	public String create(@ModelAttribute Student student) {
 		sr.create(student);
 		return "redirect:/";
+	}
+	
+	@GetMapping("/student/list")
+	public String list(Model model) {
+		List<Student> students = sr.listAll();
+		model.addAttribute("students", students);
+		return "student/list";
 	}
 
 }

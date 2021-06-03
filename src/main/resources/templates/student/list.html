@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<meta charset="UTF-8" />
+<title>Students list</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<div id="listaDeAlunos">
+		<h3 class="main-title center">Students List</h3>
+		<div class="container">
+			<table class="striped responsive-table">
+				<thead>
+					<tr>
+						<th style="text-align: center;">Name</th>
+						<th style="text-align: center;">BirthDate</th>
+						<th style="text-align: center;">Actions</th>
+					</tr>
+				</thead>
+				<tr th:each="student : ${students}">
+					<td style="text-align: center;"><span
+						th:text="${student.name}"></span></td>
+					<td style="text-align: center;"><span
+						th:text="${student.birthDate}"></span></td>
+					<td style="text-align: center;"><a
+						th:href="@{'/student/info/' + ${student.id}}" title="Info"> <i
+							class="small material-icons ">perm_contact_calendar</i>
+					</a> <a th:href="@{'/skill/create/' + ${student.id}}"
+						title="Register Skill"> <i class="small material-icons orange-text ">extension
+						</i>
+					</a> <a th:href="@{'/grade/create/' + ${student.id}}" title="Grades">
+							<i class="small material-icons green-text">spellcheck </i>
+					</a></td>
+
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="../materialize/js/materialize.min.js"></script>
+
+</body>
+</html>
