@@ -8,9 +8,11 @@ import org.bson.Document;
 import org.bson.codecs.Codec;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
 import com.lucinda.geoschool.codecs.StudentCodec;
+import com.lucinda.geoschool.models.Skill;
 import com.lucinda.geoschool.models.Student;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -18,6 +20,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 
 @Repository
 public class StudentRepository {
@@ -55,4 +58,18 @@ public class StudentRepository {
 		mongoClient.close();
 		return studentsList;
 	}
+	
+	public Student getById(String id) {
+		MongoClient mongoClient = getClient();
+		Student student = this.students.find(Filters.eq("_id", new ObjectId(id))).first();
+		mongoClient.close();
+		return student;
+	}
+	
+	public void update(Student student) {
+		MongoClient mongoClient = getClient();
+		this.students.updateOne(Filters.eq("_id", student.getId()), new Document("$set", student));
+		mongoClient.close();
+	}
+	
 }

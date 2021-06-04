@@ -1,6 +1,7 @@
 package com.lucinda.geoschool.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -53,6 +54,22 @@ public class Student {
 	
 	public Student createId() {
 	this.setId(new ObjectId());
+		return this;
+	}
+	
+	public Student addSkill(Skill skill) {
+		if(this.skills == null) {
+			this.skills = new ArrayList<Skill>();
+		}
+		this.skills.add(skill);
+		return this;
+	}
+	
+	public Student addGrade(Grade grade) {
+		if(this.grades == null) {
+			this.grades = new ArrayList<Grade>();
+		}
+		this.grades.add(grade);
 		return this;
 	}
 	

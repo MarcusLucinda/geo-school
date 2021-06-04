@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8" />
+<link type="text/css" rel="stylesheet"
+  href="../../materialize/css/materialize.min.css" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet" />
+<title>Student info</title>
+<script type="text/javascript"
+    src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<div id="infoForm" class="container">
+  <h3 class="main-title center">Student Info</h3>
+    <div class="row">
+        <div class="section">
+          <h5>Basics</h5>
+          <div class="row">
+            <div class="input-field col s12">
+                  <input id="name" type="text" th:field="${student.name}" disabled="disabled"  />
+              <label for="name">Name</label>
+                </div>
+          </div>
+          <div class="row">
+                <div class="input-field col s12">
+              <input id="birthDate" type="text" th:field="${student.birthDate}" disabled="disabled"  />
+                    <label for="birthDate">Birth Date</label>
+                </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="program" type="text" class="validate" th:field="${student.program.name}" disabled="disabled"   />
+              <label for="program">Program</label>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h5>Grades</h5>
+          <div class="row">
+            <div class="input-field col s12">
+                  <ul>
+                    <th:block th:object="${student}">
+                       <li th:each="grade : *{grades}" th:text="${'Grade: ' + grade.grade }"></li>
+                    </th:block>
+                  </ul>
+            </div>
+          </div>
+        </div> 
+        <div class="section">
+          <h5>Skills</h5>
+          <div class="row">
+            <div class="input-field col s12">
+                  <ul>
+                    <th:block th:object="${student}">
+                       <li th:each="skill : *{skills}" th:text="${'Name: ' + skill.name + ' - Level: ' + skill.level }"></li>
+                    </th:block>
+                  </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12 center">
+            <button onclick="history.back();" class="btn waves-effect waves-light" type="submit" name="action">Back</button>
+          </div>
+        </div>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="../../materialize/js/materialize.min.js"></script>
+
+</body>
+</html>
