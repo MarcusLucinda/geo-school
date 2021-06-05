@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <link type="text/css" rel="stylesheet"
-	href="../materialize/css/materialize.min.css" media="screen,projection" />
+	href="../../materialize/css/materialize.min.css"
+	media="screen,projection" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
 <title>Register student</title>
@@ -36,6 +37,12 @@
 						<div class="input-field col s12">
 							<input id="program" type="text" class="validate"
 								th:field="*{program.name}" /> <label for="program">Program</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="address" type="text" class="validate"
+								th:field="*{contact.address}" /> <label for="address">Address</label>
 						</div>
 					</div>
 

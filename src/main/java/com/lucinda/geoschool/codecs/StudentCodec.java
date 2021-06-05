@@ -1,6 +1,5 @@
 package com.lucinda.geoschool.codecs;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +14,7 @@ import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
 import org.bson.types.ObjectId;
 
+import com.lucinda.geoschool.models.Contact;
 import com.lucinda.geoschool.models.Grade;
 import com.lucinda.geoschool.models.Program;
 import com.lucinda.geoschool.models.Skill;
@@ -36,6 +36,7 @@ public class StudentCodec implements CollectibleCodec<Student> {
 		Program program = student.getProgram();
 		List<Skill> skills = student.getSkills();
 		List<Grade> grades = student.getGrades();
+		Contact contact = student.getContact();
 
 		Document document = new Document();
 		document.put("_id", id);
@@ -58,6 +59,14 @@ public class StudentCodec implements CollectibleCodec<Student> {
 			}
 			document.put("grades", gradesDoc);
 		}
+		
+		List<Double> coordinates = new ArrayList<Double>();
+		for (Double coord : contact.getCoordinates()) {
+			coordinates.add(coord);
+		}
+		document.put("contact", new Document().append("endereco", contact.getAddress())
+				.append("coordinates", coordinates).append("type", contact.getType()));
+		
 		codec.encode(writer, document, encoderContext);
 	}
 
@@ -102,6 +111,13 @@ public class StudentCodec implements CollectibleCodec<Student> {
 				grades.add(grade);
 			}
 			student.setGrades(grades);
+		}
+		
+		Document contact = (Document) document.get("contact");
+		if (contact != null) {
+			String address = contact.getString("adress");
+			List<Double> coordinates = (List<Double>) contact.get("coordinates");
+			student.setContact(new Contact(address, coordinates));
 		}
 
 		return student;

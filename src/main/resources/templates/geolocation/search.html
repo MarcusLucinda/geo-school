@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link type="text/css" rel="stylesheet"
+	href="../../materialize/css/materialize.min.css"
+	media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<title>Geo search</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../js/inicializar.js"></script>
+<script type="text/javascript" src="../js/googlemaps.js"></script>
+<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+	<div id="geoForm" class="container">
+		<h3 class="main-title center">Students Locations</h3>
+		<form class="col s12" action="/geolocation/search" method="get">
+			<div class="row">
+				<div class="input-field col s12">
+					<select class="browser-default" name="studentId" id="studentId">
+						<option th:each="student : ${students}" th:value="${student.id}"
+							th:text="${student.name}">Student Name</option>
+					</select>
+				</div>
+			</div>
+			<div th:if="${regionStudents} != null">
+				<div class="row">
+					<div id="map" class="map"></div>
+					<script th:inline="javascript">
+    /*<![CDATA[*/
+        var students = [[${regionStudents}]];
+    /*]]>*/
+</script>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12 center">
+					<button class="btn waves-effect waves-light" type="submit">Search</button>
+				</div>
+			</div>
+		</form>
+
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=API_KEY&amp;callback=initMap"
+			async="async" defer="defer"></script>
+	</div>
+
+	<script type="text/javascript"
+		src="../../materialize/js/materialize.min.js"></script>
+</body>
+</html>

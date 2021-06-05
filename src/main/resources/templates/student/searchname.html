@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link type="text/css" rel="stylesheet"
+	href="../../materialize/css/materialize.min.css"
+	media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<title>Search student</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<div id="pesquisaAluno" class="container">
+		<h3 class="main-title center">Search Student</h3>
+		<form class="col s12" action="/student/search" method="get">
+			<div class="row">
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="name" name="name" type="text" /> <label
+							for="first_name">Name</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12 center">
+						<button class="btn waves-effect waves-light" type="submit">Search</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div th:if="${students} != null">
+			<div class="row">
+				<div class="input-field col s12">
+					<table class="striped responsive-table">
+						<thead>
+							<tr>
+								<th style="text-align: center;">Name</th>
+								<th style="text-align: center;">BirthDate</th>
+								<th style="text-align: center;">Program</th>
+							</tr>
+						</thead>
+						<tr th:each="student : ${students}">
+							<td style="text-align: center;" th:text="${student.name}"></td>
+							<td style="text-align: center;" th:text="${student.birthDate}"></td>
+							<td style="text-align: center;" th:text="${student.program.name}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"
+		src="../../materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

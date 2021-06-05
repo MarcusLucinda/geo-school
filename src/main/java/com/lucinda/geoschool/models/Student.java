@@ -14,6 +14,7 @@ public class Student {
 	private Program program;
 	private List<Grade> grades;
 	private List<Skill> skills;
+	private Contact contact;
 	
 	public ObjectId getId() {
 		return id;
@@ -50,6 +51,12 @@ public class Student {
 	}
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
+	}
+	public Contact getContact() {
+		return contact;
+	}
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
 	
 	public Student createId() {
