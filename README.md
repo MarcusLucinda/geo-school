@@ -1,6 +1,6 @@
 ## Students Database with Geolocation
 
-This is a webapp that can be used to store and visualize students info, includin location. It was made with MongoBD as the NoSQL database, Java and Materialize.
+This is a webapp that can be used to store and visualize student's info, including location. It was made with MongoBD as the NoSQL database, Java and Materialize.
 <br/>
 ![image](https://user-images.githubusercontent.com/51497214/120944814-d3178100-c70c-11eb-8798-879bc3119678.png)\
 The NoSQL database schema.
