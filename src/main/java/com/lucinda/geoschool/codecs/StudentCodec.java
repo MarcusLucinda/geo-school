@@ -64,7 +64,7 @@ public class StudentCodec implements CollectibleCodec<Student> {
 		for (Double coord : contact.getCoordinates()) {
 			coordinates.add(coord);
 		}
-		document.put("contact", new Document().append("endereco", contact.getAddress())
+		document.put("contact", new Document().append("address", contact.getAddress())
 				.append("coordinates", coordinates).append("type", contact.getType()));
 		
 		codec.encode(writer, document, encoderContext);
@@ -115,7 +115,7 @@ public class StudentCodec implements CollectibleCodec<Student> {
 		
 		Document contact = (Document) document.get("contact");
 		if (contact != null) {
-			String address = contact.getString("adress");
+			String address = contact.getString("address");
 			List<Double> coordinates = (List<Double>) contact.get("coordinates");
 			student.setContact(new Contact(address, coordinates));
 		}

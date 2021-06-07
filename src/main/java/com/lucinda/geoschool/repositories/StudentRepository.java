@@ -111,7 +111,7 @@ public class StudentRepository {
 		List<Double> coordinates = student.getContact().getCoordinates();
 		Point refPoint = new Point(new Position(coordinates.get(0), coordinates.get(1)));
 		
-		MongoCursor<Student> result = this.students.find(Filters.nearSphere("contact", refPoint, 3000.0, 0.0)).iterator();
+		MongoCursor<Student> result = this.students.find(Filters.nearSphere("contact", refPoint, 20000.0, 0.0)).iterator();
 		List<Student> students = new ArrayList<Student>();
 		while(result.hasNext()) {
 			Student otherStudent = result.next();

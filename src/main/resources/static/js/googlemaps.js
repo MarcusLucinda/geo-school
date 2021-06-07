@@ -1,11 +1,11 @@
 function initMap() {
-    var brasil = {
-        lat : -14.239183,
-        lng : -51.913726
+    var uk = {
+        lat : 51.507351,
+        lng : -0.127758
     };
 
     var map = new google.maps.Map(document.getElementById('map'), {
-        center : brasil,
+        center : uk,
         scrollwheel : false,
         zoom : 4
     });
