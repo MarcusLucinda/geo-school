@@ -28,3 +28,8 @@ Detailed student info.
 <br/>
 ![image](https://user-images.githubusercontent.com/51497214/120944884-39040880-c70d-11eb-8758-6e7df5f5fbdf.png)
 The students locations identified on the map.
+
+<br/>
+<br>
+
+Learnt on [Alura](https://www.alura.com.br)
